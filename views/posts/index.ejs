@@ -1,9 +1,18 @@
 <%- include('../partials/header') %>
 
 
-<h3>YOOOO</h3>
-<h3><%= user %></h3>
+<h3>YOOOOOOOOOOOOOOO</h3>
 
-
+<form action="/posts/new" method="POST">
+    <select name="county_name">
+        <option value="Los Angeles">Los Angeles</option>
+    </select>
+    <select name="spot_name">
+        <option value="Venice">Venice</option>
+        <option value="El Porto">El Porto</option>
+        <option value="Malibu">Malibu</option>
+    </select>
+    <button type="submit">View Forecast</button>
+</form>
 
 <%- include('../partials/footer') %>
