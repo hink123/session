@@ -7,12 +7,12 @@ module.exports = {
     index,
     new: newPost,
     create,
-    show
+    show,
+    delete: deleteOne
 }
 
 function index(req, res) {
     Post.find({}, function(err, posts) {
-        console.log("look here" + posts);
         res.render('posts/index', {
             user: req.user,
             posts
@@ -43,6 +43,12 @@ function create(req, res) {
         if(err) return res.render('posts/new', {
             user: req.user
         });
+        res.redirect('/posts');
+    })
+}
+
+function deleteOne(req, res) {
+    Post.deleteOne({_id: req.params.id}, function(err) {
         res.redirect('/posts');
     })
 }

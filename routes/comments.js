@@ -3,6 +3,7 @@ var router = express.Router();
 var commentsCtlr = require('../controllers/comments');
 
 router.post('/posts/:id/comments', isLoggedIn, commentsCtlr.create);
+router.delete('/posts/:id/comments/:idx', isLoggedIn, commentsCtlr.delete);
 
 module.exports = router;
 

@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 
-<h3>YOOOOOOOOOOOOOOO</h3>
+<h3>Select a Location</h3>
 
 <form action="/posts/new" method="POST">
     <select name="county_name">
@@ -15,7 +15,7 @@
     <button type="submit">View Forecast</button>
 </form>
 
-<% if(posts === '') { %>
+<% if(posts.length === 0) { %>
     <h3>There are currently no posts</h3>
 <% } else { %>
     <% posts.forEach(function(p) { %>
@@ -35,6 +35,9 @@
             <h3>
                 <a href="/posts/<%= p._id %>">View</a>
             </h3>
+           <form action="/posts/<%= p._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete</button>
+            </form>
         </div>
         <br><br>
     <% })} %>    

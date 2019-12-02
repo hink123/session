@@ -14,7 +14,7 @@
     </h3>
 </div>
 
-<% post.comments.forEach(function(comment) { %>
+<% post.comments.forEach(function(comment, idx) { %>
     <div>
         <h4>
             <%= comment.userName %>
@@ -25,6 +25,12 @@
         <h4>
             <%= comment.createdAt %>
         </h4>
+        <% if (comment.user) { %>
+        <% if (comment.user.toString() === user._id.toString()) { %>
+            <form action="/posts/<%= post._id %>/comments/<%= idx %>?_method=DELETE" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        <% }} %>
     </div>
     <br><br>
 <% }) %>
