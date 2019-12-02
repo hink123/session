@@ -5,12 +5,17 @@ const rootURL = 'http://api.spitcast.com';
 
 module.exports = {
     index,
-    new: newPost
+    new: newPost,
+    create
 }
 
 function index(req, res) {
-    res.render('posts/index', {
-        user: req.user
+    Post.find({}, function(err, posts) {
+        console.log("look here" + posts);
+        res.render('posts/index', {
+            user: req.user,
+            posts
+        })
     })
 }
 
@@ -18,4 +23,15 @@ function newPost(req, res) {
     res.render('posts/new', {
         user: req.user
     });
+}
+
+function create(req, res) {
+    var post = new Post(req.body);
+    post.user = req.user;
+    post.save(function(err) {
+        if(err) return res.render('posts/new', {
+            user: req.user
+        });
+        res.redirect('/posts');
+    })
 }

@@ -15,4 +15,13 @@
     <button type="submit">View Forecast</button>
 </form>
 
+<% if(posts === '') { %>
+    <h3>There are currently no posts</h3>
+<% } else { %>
+    <% posts.forEach(function(p) { %>
+        <h3>
+            <%= p %>
+        </h3>
+    <% })} %>    
+
 <%- include('../partials/footer') %>

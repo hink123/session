@@ -12,7 +12,7 @@ var commentSchema = new Schema({
 })
 
 var postSchema = new Schema({
-    text: {
+    description: {
         type: String,
         required: true
     },

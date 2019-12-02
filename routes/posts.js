@@ -6,6 +6,7 @@ var postsCtlr = require('../controllers/posts');
 /* GET users listing. */
 router.get('/', isLoggedIn, postsCtlr.index);
 router.post('/new', isLoggedIn, postsCtlr.new);
+router.post('/', isLoggedIn, postsCtlr.create);
 
 module.exports = router;
 
