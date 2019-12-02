@@ -6,7 +6,8 @@ const rootURL = 'http://api.spitcast.com';
 module.exports = {
     index,
     new: newPost,
-    create
+    create,
+    show
 }
 
 function index(req, res) {
@@ -28,10 +29,20 @@ function newPost(req, res) {
 function create(req, res) {
     var post = new Post(req.body);
     post.user = req.user;
+    post.userName = post.user.name;
     post.save(function(err) {
         if(err) return res.render('posts/new', {
             user: req.user
         });
         res.redirect('/posts');
+    })
+}
+
+function show(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+        res.render('posts/show', {
+            user: req.user,
+            post
+        });
     })
 }

@@ -19,9 +19,24 @@
     <h3>There are currently no posts</h3>
 <% } else { %>
     <% posts.forEach(function(p) { %>
-        <h3>
-            <%= p %>
-        </h3>
+        <div class="row bootstrap snippets">
+            <h3>
+                <%= p.userName %>
+            </h3>
+            <h3>
+                <%= p.createdAt %>
+            </h3>
+            <h3>
+                <%= p.description %>
+            </h3>
+            <h3>
+                <%= p.date %>
+            </h3>
+            <h3>
+                <a href="/posts/<%= p._id %>">View</a>
+            </h3>
+        </div>
+        <br><br>
     <% })} %>    
 
 <%- include('../partials/footer') %>

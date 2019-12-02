@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<div class="row bootstrap snippets">
+    <h3>
+        <%= post.userName %>
+    </h3>
+    <h3>
+        <%= post.createdAt %>
+    </h3>
+    <h3>
+        <%= post.description %>
+    </h3>
+    <h3>
+        <%= post.date %>
+    </h3>
+</div>
+
+<form action="/posts/<%= post._id%>/comments" method="POST">
+    <label>Add a Comment</label>
+    <textarea name="text" cols="30" rows="10"></textarea>
+    <button type="submit">Submit</button>
+</form>
+
+
+
+
+<%- include('../partials/footer') %>

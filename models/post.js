@@ -9,6 +9,9 @@ var commentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
+}, 
+{
+    timestamps: true
 })
 
 var postSchema = new Schema({
@@ -22,6 +25,9 @@ var postSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    userName: {
+        type: String
     },
     comments: [commentSchema]
 
