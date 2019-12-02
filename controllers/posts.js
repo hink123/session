@@ -20,6 +20,15 @@ function index(req, res) {
     })
 }
 
+function show(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+        res.render('posts/show', {
+            user: req.user,
+            post
+        });
+    })
+}
+
 function newPost(req, res) {
     res.render('posts/new', {
         user: req.user
@@ -35,14 +44,5 @@ function create(req, res) {
             user: req.user
         });
         res.redirect('/posts');
-    })
-}
-
-function show(req, res) {
-    Post.findById(req.params.id, function(err, post) {
-        res.render('posts/show', {
-            user: req.user,
-            post
-        });
     })
 }
