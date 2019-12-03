@@ -9,7 +9,8 @@ module.exports = {
     create,
     show,
     delete: deleteOne,
-    edit
+    edit,
+    update
 }
 
 function index(req, res) {
@@ -60,5 +61,14 @@ function edit(req, res) {
             user: req.user, 
             post
         });
+    })
+}
+
+function update(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+        post.description = req.body.description;
+        post.save(function(err) {
+            res.redirect('/posts');
+        })
     })
 }
