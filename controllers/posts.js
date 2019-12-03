@@ -33,12 +33,14 @@ function show(req, res) {
 
 function newPost(req, res) {
     request(rootURL + 'api/spot/all', function(err, response, body) {
+        var parsedBody = JSON.parse(body);
         var forecastData;
-        for(let i = 0; i < body.length; i++) {
-            if((body[i]['county_name'] === "Los Angeles") && (body[i]['spot_name'] === "Venice")) {
-                return forecastData = body[i];
+        for(let i = 0; i < parsedBody.length; i++) {
+            if((parsedBody[i].county_name === "Los Angeles") && (parsedBody[i].spot_name === "Venice")) {
+                forecastData = parsedBody[i];
             }
         }
+        forecastData = JSON.stringify(forecastData);
         console.log("HERE IS THE SPOT: " + forecastData);
         res.render('posts/new', {
             user: req.user
