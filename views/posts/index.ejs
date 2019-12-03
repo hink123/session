@@ -21,16 +21,19 @@
     <% posts.forEach(function(p) { %>
         <div class="row bootstrap snippets">
             <h3>
-                <%= p.userName %>
+                User: <%= p.userName %>
             </h3>
             <h3>
-                <%= p.createdAt %>
+                Posted at: <%= p.createdAt %>
             </h3>
             <h3>
                 <%= p.description %>
             </h3>
             <h3>
-                <%= p.date %>
+                Time: <%= p.time %>
+            </h3>
+            <h3>
+                Session: <%= JSON.parse(p.day).date %>, <%= JSON.parse(p.day).shape_full %>, <%= JSON.parse(p.day).size %>ft 
             </h3>
             <h3>
                 <a href="/posts/<%= p._id %>">View</a>

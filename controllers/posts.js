@@ -41,19 +41,14 @@ function newPost(req, res) {
             }
         }
         var spotId = JSON.stringify(forecastData.spot_id);
-        // console.log("HERE IS THE SPOT: " + forecastData);
-        //console.log("HERE IS THE SPOTID: " + JSON.stringify(forecastData.spot_id));
         request(`${rootURL}api/spot/forecast/${spotId}/?dcat=week`, function(err, response, body) {
             var parsedSpot = JSON.parse(body);
-            //console.log('7 DAY FORECAST: ' + body);
             var sevenDays = [];
             for(let i = 0; i < parsedSpot.length; i++) {
                 if(parsedSpot[i].hour === "10AM") {
                     sevenDays.push(parsedSpot[i]);
                 }
             }
-            // sevenDays = JSON.stringify(sevenDays);
-            // console.log('SHOULD ONLY BE SEVEN: ' + typeof(sevenDays));
             res.render('posts/new', {
                 user: req.user,
                 sevenDays
@@ -63,13 +58,16 @@ function newPost(req, res) {
 }
 
 function create(req, res) {
+    console.log("SESSION INFO: " + typeof(req.body.day));
     var post = new Post(req.body);
     post.user = req.user;
     post.userName = post.user.name;
     post.save(function(err) {
+
         if(err) return res.render('posts/new', {
-            user: req.user
+            user: req.user,
         });
+
         res.redirect('/posts');
     })
 }

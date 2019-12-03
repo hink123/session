@@ -22,8 +22,8 @@ var postSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date
+    time: {
+        type: String
     }, 
     user: {
         type: Schema.Types.ObjectId,
@@ -32,7 +32,11 @@ var postSchema = new Schema({
     userName: {
         type: String
     },
-    comments: [commentSchema]
+    comments: [commentSchema],
+    day: {
+        type: String,
+        required: true
+    }
 
 }, {
     timestamps: true

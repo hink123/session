@@ -8,9 +8,9 @@
     <div>
         <% sevenDays.forEach(function(day) { %>
             <div>
-                <label for="<%= day.date %>">
-                    <%= day.date %>, <%= day.shape_full %>, <%= day.size %>
-                    <input type="radio" value="<%= day.date %>" name="day">
+                <label for="<%= day %>">
+                    <%= day.date %>, <%= day.shape_full %>, <%= day.size %>ft
+                    <input type="radio" value="<%= JSON.stringify(day) %>" name="day">
                 </label>
             </div>
         <% }) %>
@@ -20,8 +20,8 @@
         <input type="text" name="description">
     </div>
     <div>
-        <label>When?</label>
-        <input type="datetime-local" name="date">
+        <label>What Time?</label>
+        <input type="time" name="time">
     </div>
     <button type="submit">Submit Session</button>
 </form>
