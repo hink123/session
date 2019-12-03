@@ -12,6 +12,9 @@
     <h3>
         <%= post.time %>
     </h3>
+    <h3>
+        Session: <%= JSON.parse(post.day).spot_name %>, <%= JSON.parse(post.day).date %>, <%= JSON.parse(post.day).shape_full %>, <%= JSON.parse(post.day).size %>ft 
+    </h3>
 </div>
 
 <% post.comments.forEach(function(comment, idx) { %>

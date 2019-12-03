@@ -32,11 +32,13 @@ function show(req, res) {
 }
 
 function newPost(req, res) {
+    var countyName = req.body.county_name;
+    var spotName = req.body.spot_name;
     request(rootURL + 'api/spot/all', function(err, response, body) {
         var parsedAll = JSON.parse(body);
         var forecastData;
         for(let i = 0; i < parsedAll.length; i++) {
-            if((parsedAll[i].county_name === "Los Angeles") && (parsedAll[i].spot_name === "Venice")) {
+            if((parsedAll[i].county_name === countyName) && (parsedAll[i].spot_name === spotName)) {
                 forecastData = parsedAll[i];
             }
         }

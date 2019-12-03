@@ -10,7 +10,16 @@
     <select name="spot_name">
         <option value="Venice">Venice</option>
         <option value="El Porto">El Porto</option>
+        <option value="County Line">County Line</option>
+        <option value="Leo Carrillo">Leo Carrillo</option>
+        <option value="Zuma Beach">Zuma Beach</option>
+        <option value="Point Dume">Point Dume</option>
         <option value="Malibu">Malibu</option>
+        <option value="Topanga">Topanga</option>
+        <option value="Sunset">Sunset</option>
+        <option value="Manhattan Beach">Manhattan Beach</option>
+        <option value="Hermosa">Hermosa</option>
+        <option value="Topaz Street">Topaz Street</option>
     </select>
     <button type="submit">View Forecast</button>
 </form>
@@ -33,7 +42,7 @@
                 Time: <%= p.time %>
             </h3>
             <h3>
-                Session: <%= JSON.parse(p.day).date %>, <%= JSON.parse(p.day).shape_full %>, <%= JSON.parse(p.day).size %>ft 
+                Session: <%= JSON.parse(p.day).spot_name %>, <%= JSON.parse(p.day).date %>, <%= JSON.parse(p.day).shape_full %>, <%= JSON.parse(p.day).size %>ft 
             </h3>
             <h3>
                 <a href="/posts/<%= p._id %>">View</a>
