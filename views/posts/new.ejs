@@ -1,12 +1,28 @@
 <%- include('../partials/header') %>
 
-<h3>HIIIIIIII</h3>
+<h3>
+    Seven Day Forecast
+</h3>
 
 <form action="/posts" method="POST">
-    <label>Say something cool</label>
-    <input type="text" name="description">
-    <label>When?</label>
-    <input type="datetime-local" name="date">
+    <div>
+        <% sevenDays.forEach(function(day) { %>
+            <div>
+                <label for="<%= day.date %>">
+                    <%= day.date %>, <%= day.shape_full %>, <%= day.size %>
+                    <input type="radio" value="<%= day.date %>" name="day">
+                </label>
+            </div>
+        <% }) %>
+    </div>
+    <div>
+        <label>Say something cool</label>
+        <input type="text" name="description">
+    </div>
+    <div>
+        <label>When?</label>
+        <input type="datetime-local" name="date">
+    </div>
     <button type="submit">Submit Session</button>
 </form>
 

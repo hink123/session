@@ -52,10 +52,11 @@ function newPost(req, res) {
                     sevenDays.push(parsedSpot[i]);
                 }
             }
-            sevenDays = JSON.stringify(sevenDays[6]);
-            console.log('SHOULD ONLY BE SEVEN: ' + sevenDays);
+            // sevenDays = JSON.stringify(sevenDays);
+            // console.log('SHOULD ONLY BE SEVEN: ' + typeof(sevenDays));
             res.render('posts/new', {
-                user: req.user
+                user: req.user,
+                sevenDays
             });
         })
     })
