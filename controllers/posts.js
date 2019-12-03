@@ -33,18 +33,31 @@ function show(req, res) {
 
 function newPost(req, res) {
     request(rootURL + 'api/spot/all', function(err, response, body) {
-        var parsedBody = JSON.parse(body);
+        var parsedAll = JSON.parse(body);
         var forecastData;
-        for(let i = 0; i < parsedBody.length; i++) {
-            if((parsedBody[i].county_name === "Los Angeles") && (parsedBody[i].spot_name === "Venice")) {
-                forecastData = parsedBody[i];
+        for(let i = 0; i < parsedAll.length; i++) {
+            if((parsedAll[i].county_name === "Los Angeles") && (parsedAll[i].spot_name === "Venice")) {
+                forecastData = parsedAll[i];
             }
         }
-        forecastData = JSON.stringify(forecastData);
-        console.log("HERE IS THE SPOT: " + forecastData);
-        res.render('posts/new', {
-            user: req.user
-        });
+        var spotId = JSON.stringify(forecastData.spot_id);
+        // console.log("HERE IS THE SPOT: " + forecastData);
+        //console.log("HERE IS THE SPOTID: " + JSON.stringify(forecastData.spot_id));
+        request(`${rootURL}api/spot/forecast/${spotId}/?dcat=week`, function(err, response, body) {
+            var parsedSpot = JSON.parse(body);
+            //console.log('7 DAY FORECAST: ' + body);
+            var sevenDays = [];
+            for(let i = 0; i < parsedSpot.length; i++) {
+                if(parsedSpot[i].hour === "10AM") {
+                    sevenDays.push(parsedSpot[i]);
+                }
+            }
+            sevenDays = JSON.stringify(sevenDays[6]);
+            console.log('SHOULD ONLY BE SEVEN: ' + sevenDays);
+            res.render('posts/new', {
+                user: req.user
+            });
+        })
     })
 }
 
