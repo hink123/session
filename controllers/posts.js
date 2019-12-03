@@ -8,7 +8,8 @@ module.exports = {
     new: newPost,
     create,
     show,
-    delete: deleteOne
+    delete: deleteOne,
+    edit
 }
 
 function index(req, res) {
@@ -50,5 +51,14 @@ function create(req, res) {
 function deleteOne(req, res) {
     Post.deleteOne({_id: req.params.id}, function(err) {
         res.redirect('/posts');
+    })
+}
+
+function edit(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+        res.render('posts/edit', {
+            user: req.user, 
+            post
+        });
     })
 }

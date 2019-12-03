@@ -9,6 +9,7 @@ router.post('/new', isLoggedIn, postsCtlr.new);
 router.post('/', isLoggedIn, postsCtlr.create);
 router.get('/:id', isLoggedIn, postsCtlr.show);
 router.delete('/:id', isLoggedIn, postsCtlr.delete);
+router.get('/:id/edit', isLoggedIn, postsCtlr.edit);
 
 module.exports = router;
 

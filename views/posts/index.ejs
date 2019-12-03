@@ -35,6 +35,9 @@
             <h3>
                 <a href="/posts/<%= p._id %>">View</a>
             </h3>
+            <% if (p.user.toString() === user._id.toString()) { %>
+                    <a href="/posts/<%= p._id %>/edit">Edit</a>
+            <% } %>
            <form action="/posts/<%= p._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete</button>
             </form>
