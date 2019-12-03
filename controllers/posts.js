@@ -1,7 +1,7 @@
 var Post = require('../models/post');
 var User = require('../models/user');
 var request = require('request');
-const rootURL = 'http://api.spitcast.com';
+const rootURL = 'http://api.spitcast.com/';
 
 module.exports = {
     index,
@@ -32,9 +32,18 @@ function show(req, res) {
 }
 
 function newPost(req, res) {
-    res.render('posts/new', {
-        user: req.user
-    });
+    request(rootURL + 'api/spot/all', function(err, response, body) {
+        var forecastData;
+        for(let i = 0; i < body.length; i++) {
+            if((body[i]['county_name'] === "Los Angeles") && (body[i]['spot_name'] === "Venice")) {
+                return forecastData = body[i];
+            }
+        }
+        console.log("HERE IS THE SPOT: " + forecastData);
+        res.render('posts/new', {
+            user: req.user
+        });
+    })
 }
 
 function create(req, res) {
