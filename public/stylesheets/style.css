@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,6 +7,29 @@ a {
   color: #00B7FF;
 }
 
-nav div {
+div.wrapper {
+  margin: 8vmin;
+  padding: 2vmin;
+  border: 3px solid black;
+  border-radius: 2vmin;
+  background-color: white;
+}
+
+div.locater {
+  text-align: center;
+  width: 80vmin;
+  margin: 8vmin auto;
+}
+
+nav {
+  height: 8vmin;
+  font-size: 3vmin;
+}
+
+nav div.user {
   color: white;
+}
+
+div.small {
+  background-color: lightblue;
 }

@@ -1,60 +1,64 @@
 <%- include('../partials/header') %>
 
+<div class="wrapper locater">
+    <h3>Select a Location</h3>
+    
+    <form action="/posts/new" method="POST">
+        <select name="county_name">
+            <option value="Los Angeles">Los Angeles</option>
+        </select>
+        <select name="spot_name">
+            <option value="Venice">Venice</option>
+            <option value="El Porto">El Porto</option>
+            <option value="County Line">County Line</option>
+            <option value="Leo Carrillo">Leo Carrillo</option>
+            <option value="Zuma Beach">Zuma Beach</option>
+            <option value="Point Dume">Point Dume</option>
+            <option value="Malibu">Malibu</option>
+            <option value="Topanga">Topanga</option>
+            <option value="Sunset">Sunset</option>
+            <option value="Manhattan Beach">Manhattan Beach</option>
+            <option value="Hermosa">Hermosa</option>
+            <option value="Topaz Street">Topaz Street</option>
+        </select>
+        <button type="submit">View Forecast</button>
+    </form>
+</div>
 
-<h3>Select a Location</h3>
+<div class="wrapper feed">
+    <% if(posts.length === 0) { %>
+            <h3>There are currently no posts</h3>
+    <% } else { %>
+        <% posts.forEach(function(p) { %>
+            <div class="small">
+                <h1>
+                    <%= JSON.parse(p.day).spot_name %> 
+                </h1>
+                <h3>
+                    <%= JSON.parse(p.day).shape_full %>, <%= JSON.parse(p.day).size %>ft 
+                </h3>
+                <h3>
+                    <%= JSON.parse(p.day).date %> at <%= p.time %> PST
+                </h3>
+                <h4>
+                    <%= p.userName %>: <%= p.description %>
+                </h4>
+                <h6>
+                    Posted: <%= p.createdAt %>
+                </h6>
+                <h3>
+                    <a href="/posts/<%= p._id %>">View</a>
+                </h3>
+                <% if (p.user.toString() === user._id.toString()) { %>
+                        <a href="/posts/<%= p._id %>/edit">Edit</a>
+                <% } %>
+                <form action="/posts/<%= p._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            <br><br>
+        <% })} %>    
+</div>
 
-<form action="/posts/new" method="POST">
-    <select name="county_name">
-        <option value="Los Angeles">Los Angeles</option>
-    </select>
-    <select name="spot_name">
-        <option value="Venice">Venice</option>
-        <option value="El Porto">El Porto</option>
-        <option value="County Line">County Line</option>
-        <option value="Leo Carrillo">Leo Carrillo</option>
-        <option value="Zuma Beach">Zuma Beach</option>
-        <option value="Point Dume">Point Dume</option>
-        <option value="Malibu">Malibu</option>
-        <option value="Topanga">Topanga</option>
-        <option value="Sunset">Sunset</option>
-        <option value="Manhattan Beach">Manhattan Beach</option>
-        <option value="Hermosa">Hermosa</option>
-        <option value="Topaz Street">Topaz Street</option>
-    </select>
-    <button type="submit">View Forecast</button>
-</form>
-
-<% if(posts.length === 0) { %>
-    <h3>There are currently no posts</h3>
-<% } else { %>
-    <% posts.forEach(function(p) { %>
-        <div class="row bootstrap snippets">
-            <h3>
-                User: <%= p.userName %>
-            </h3>
-            <h3>
-                Posted at: <%= p.createdAt %>
-            </h3>
-            <h3>
-                <%= p.description %>
-            </h3>
-            <h3>
-                Time: <%= p.time %>
-            </h3>
-            <h3>
-                Session: <%= JSON.parse(p.day).spot_name %>, <%= JSON.parse(p.day).date %>, <%= JSON.parse(p.day).shape_full %>, <%= JSON.parse(p.day).size %>ft 
-            </h3>
-            <h3>
-                <a href="/posts/<%= p._id %>">View</a>
-            </h3>
-            <% if (p.user.toString() === user._id.toString()) { %>
-                    <a href="/posts/<%= p._id %>/edit">Edit</a>
-            <% } %>
-           <form action="/posts/<%= p._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete</button>
-            </form>
-        </div>
-        <br><br>
-    <% })} %>    
 
 <%- include('../partials/footer') %>

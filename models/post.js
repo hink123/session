@@ -23,7 +23,8 @@ var postSchema = new Schema({
         required: true
     },
     time: {
-        type: String
+        type: String,
+        required: true
     }, 
     user: {
         type: Schema.Types.ObjectId,
