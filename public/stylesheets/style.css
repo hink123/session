@@ -33,3 +33,11 @@ nav div.user {
 div.small {
   background-color: lightblue;
 }
+
+div.medium {
+  background-color: lightseagreen;
+}
+
+div.large {
+  background-color: red;
+}
