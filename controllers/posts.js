@@ -51,6 +51,7 @@ function newPost(req, res) {
                     sevenDays.push(parsedSpot[i]);
                 }
             }
+            console.log('FIRST CASE: ', sevenDays);
             res.render('posts/new', {
                 user: req.user,
                 sevenDays
@@ -60,14 +61,16 @@ function newPost(req, res) {
 }
 
 function create(req, res) {
-    console.log("SESSION INFO: " + typeof(req.body.day));
     var post = new Post(req.body);
     post.user = req.user;
     post.userName = post.user.name;
+    sevenDays = JSON.parse(req.body.sevenDays);
+    //console.log("SECOND CASE: ", JSON.parse(sevenDays));
     post.save(function(err) {
 
         if(err) return res.render('posts/new', {
             user: req.user,
+            sevenDays
         });
 
         res.redirect('/posts');
