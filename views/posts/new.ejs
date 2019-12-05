@@ -1,38 +1,42 @@
 <%- include('../partials/header') %>
 
 <div class="new">
-    <h3>
-        Seven Day Forecast
-    </h3>
+    <h2>
+        <%= spotName %> Seven Day Surf Forecast
+    </h2>
     
     <form action="/posts" method="POST">
         <table class="table">
-            <thead class="thead-dark">
-                <th></th>
+            <thead class="thead">
+                <th>Select</th>
                 <th>Date</th>
                 <th>Conditions</th>
                 <th>Size</th>
             </thead>
             <tbody>
                 <% sevenDays.forEach(function(day) { %>
-                    <tr>
+                    <% if(day.size < 3.5) { %>
+                    <tr bgcolor="lightblue">
+                    <% } else if(day.size < 5.5) { %>
+                    <tr bgcolor="lightseagreen">
+                    <% } else { %>
+                    <tr bgcolor="red">
+                   <%  } %>
                         <td><input type="radio" value="<%= JSON.stringify(day) %>" name="day"></td>
                         <td><%= day.date %></td>
                         <td><%= day.shape_full %></td>
-                        <td><%= day.size %></td>
+                        <td><%= day.size %>ft</td>
                     </tr>
                 <% }) %>
             </tbody>
         <table>
-        <div>
-            <label>Say something cool</label>
+        <div class="inputs"> 
+            <label>Add a Comment</label>
             <input type="text" name="description">
-        </div>
-        <div>
             <label>What Time?</label>
             <input type="time" name="time">
         </div>
-        <div>
+        <div class="secret">
             <input type="text" name="sevenDays" value="<%= JSON.stringify(sevenDays) %>">
         </div>
         <button type="submit">Submit Session</button>

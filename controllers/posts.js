@@ -53,7 +53,8 @@ function newPost(req, res) {
             }
             res.render('posts/new', {
                 user: req.user,
-                sevenDays
+                sevenDays,
+                spotName
             });
         })
     })
