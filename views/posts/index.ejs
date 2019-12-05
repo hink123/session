@@ -32,11 +32,11 @@
         <div class="scroll">
             <% posts.forEach(function(p) { %>
                 <% if(JSON.parse(p.day).size < 3.5) { %>
-                    <div class="feed small">
+                    <div class="feed bad">
                 <% } else if(JSON.parse(p.day).size < 5.5) { %>
-                    <div class="feed medium">
+                    <div class="feed good">
                 <% } else { %>
-                    <div class="feed large"> 
+                    <div class="feed great"> 
                 <% } %>
                         <h1>
                             <%= JSON.parse(p.day).spot_name %> 
