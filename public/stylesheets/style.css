@@ -157,3 +157,21 @@ div.login {
 div.login a {
   color: black;
 }
+
+.white {
+  background-color: white;
+  opacity: 0.9;
+}
+
+button {
+  background: none;
+  border: 1px black solid;
+}
+
+button:hover {
+  border-radius: 2vmin;
+}
+
+div.user {
+  padding-left: 15vmin;
+}
