@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <div class="locater">
-    <h3>Select a Location</h3>
+    <h3>Make a Session</h3>
     
     <form action="/posts/new" method="POST">
         <select name="county_name">
@@ -29,42 +29,45 @@
     <% if(posts.length === 0) { %>
             <h3>There are currently no posts</h3>
     <% } else { %>
-        <% posts.forEach(function(p) { %>
-            <% if(JSON.parse(p.day).size < 3.5) { %>
-                <div class="feed small">
-            <% } else if(JSON.parse(p.day).size < 5.5) { %>
-                <div class="feed medium">
-            <% } else { %>
-                <div class="feed large"> 
-            <% } %>
-                <h1>
-                    <%= JSON.parse(p.day).spot_name %> 
-                </h1>
-                <div class="inner">
-                    <h3>
-                        <%= JSON.parse(p.day).shape_full %>, <%= JSON.parse(p.day).size %>ft 
-                    </h3>
-                    <h3>
-                        <%= JSON.parse(p.day).date %> at <%= p.time %> PST
-                    </h3>
-                    <h4>
-                        <%= p.userName %>: <%= p.description %>
-                    </h4>
-                    <h6>
-                        Posted: <%= p.createdAt %>
-                    </h6>
-                    <h3>
-                        <a href="/posts/<%= p._id %>">Join Session</a>
-                    </h3>
-                    <% if (p.user.toString() === user._id.toString()) { %>
-                            <a href="/posts/<%= p._id %>/edit">Edit</a>
-                    <% } %>
-                    <form action="/posts/<%= p._id %>?_method=DELETE" method="POST">
-                        <button type="submit">Delete</button>
-                    </form>
-                </div>
-            </div>
-        <% })} %>    
+        <div class="scroll">
+            <% posts.forEach(function(p) { %>
+                <% if(JSON.parse(p.day).size < 3.5) { %>
+                    <div class="feed small">
+                <% } else if(JSON.parse(p.day).size < 5.5) { %>
+                    <div class="feed medium">
+                <% } else { %>
+                    <div class="feed large"> 
+                <% } %>
+                        <h1>
+                            <%= JSON.parse(p.day).spot_name %> 
+                        </h1>
+                        <div class="inner">
+                            <h3>
+                                <%= JSON.parse(p.day).shape_full %>, <%= JSON.parse(p.day).size %>ft 
+                            </h3>
+                            <h3>
+                                <%= JSON.parse(p.day).date %> at <%= p.time %> PST
+                            </h3>
+                            <h4>
+                                <%= p.userName %>: <%= p.description %>
+                            </h4>
+                            <h6>
+                                Posted: <%= p.createdAt %>
+                            </h6>
+                            <h3>
+                                <a href="/posts/<%= p._id %>">Join Session</a>
+                            </h3>
+                            <% if (p.user.toString() === user._id.toString()) { %>
+                                    <a href="/posts/<%= p._id %>/edit">Edit</a>
+                            <% } %>
+                            <form action="/posts/<%= p._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+        </div>
+    <% } %>    
 
 
 

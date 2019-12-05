@@ -10,7 +10,7 @@ a {
 div.locater {
   text-align: center;
   width: 80vmin;
-  margin: 8vmin auto;
+  margin: 8vmin auto 2vmin;
   padding: 2vmin;
   border: 3px solid black;
   border-radius: 2vmin;
@@ -32,6 +32,7 @@ div.feed a {
 nav {
   height: 8vmin;
   font-size: 3vmin;
+  background-color: black;
 }
 
 nav div.user {
@@ -84,4 +85,18 @@ div.inputs {
   justify-content: center;
   font-size: 3vmin;
   padding-bottom: 2vmin;
+}
+
+nav.footer {
+  color: white;
+  height: 6vmin;
+}
+
+nav.footer p {
+  margin-bottom: 0;
+}
+
+div.scroll {
+  height: 100vmin;
+  overflow: scroll;
 }
