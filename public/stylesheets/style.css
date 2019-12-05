@@ -100,3 +100,19 @@ div.scroll {
   height: 100vmin;
   overflow: scroll;
 }
+
+.caption-start {
+  border-top: 1px solid black;
+}
+
+.caption-end {
+  border-bottom: 1px solid black;
+}
+
+div.comment {
+  width: 100vmin;
+  margin: 2vmin auto 0vmin;
+  padding: 2vmin;
+  border: 2px solid black;
+  border-radius: 2vmin;
+}
