@@ -1,10 +1,14 @@
 <%- include('../partials/header') %>
 
-<form action="/posts/<%= post._id %>?_method=PUT" method="POST">
-    <label>Edit the Text</label>
-    <textarea name="description" cols="30" rows="10" ><%= post.description %></textarea>
-    <button type="submit">Submit</button>
-</form>
+<div class="input-text edit">
+    <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
+        <h4 class="caption">Edit the Text</h4>
+        <textarea name="description" cols="45" rows="5" ><%= post.description %></textarea>
+        <div class="bttn">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 
 
 <%- include('../partials/footer') %>

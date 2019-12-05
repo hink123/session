@@ -65,11 +65,13 @@ function create(req, res) {
     post.user = req.user;
     post.userName = post.user.name;
     sevenDays = JSON.parse(req.body.sevenDays);
+    spotName = JSON.parse(req.body.spotName);
     post.save(function(err) {
 
         if(err) return res.render('posts/new', {
             user: req.user,
-            sevenDays
+            sevenDays,
+            spotName
         });
 
         res.redirect('/posts');

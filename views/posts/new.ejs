@@ -32,12 +32,15 @@
         <table>
         <div class="inputs"> 
             <label>Add a Comment</label>
-            <input type="text" name="description">
+            <input type="text" name="description" autocomplete="off">
             <label>What Time?</label>
             <input type="time" name="time">
         </div>
         <div class="secret">
             <input type="text" name="sevenDays" value="<%= JSON.stringify(sevenDays) %>">
+        </div>
+        <div class="secret">
+            <input type="text" name="spotName" value="<%= JSON.stringify(spotName) %>">
         </div>
         <button type="submit">Submit Session</button>
     </form>

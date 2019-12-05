@@ -74,6 +74,10 @@ table {
   padding-left: 0;
 }
 
+tr {
+  height: 9vmin;
+}
+
 td {
   font-size: 3vmin;
 }
@@ -140,4 +144,9 @@ div.bttn {
 div.scroll-comment {
   height: 50vmin;
   overflow: scroll;
+}
+
+div.edit {
+  margin: 15vmin auto;
+  border: 3px solid black;
 }
