@@ -7,19 +7,27 @@ a {
   color: #00B7FF;
 }
 
-div.wrapper {
-  margin: 8vmin;
-  padding: 2vmin;
-  border: 3px solid black;
-  border-radius: 2vmin;
-  background-color: white;
-}
-
 div.locater {
   text-align: center;
   width: 80vmin;
   margin: 8vmin auto;
+  padding: 2vmin;
+  border: 3px solid black;
+  border-radius: 2vmin;
 }
+
+div.feed {
+  width: 140vmin;
+  margin: 8vmin auto 2vmin;
+  padding: 2vmin;
+  border: 3px solid black;
+  border-radius: 2vmin;
+}
+
+div.feed a {
+  color: white;
+}
+
 
 nav {
   height: 8vmin;
@@ -40,4 +48,16 @@ div.medium {
 
 div.large {
   background-color: red;
+}
+
+div.inner {
+  padding-left: 4vmin;
+}
+
+div.new {
+  text-align: center;
+  margin: 8vmin auto;
+  padding: 2vmin;
+  border: 3px solid black;
+  border-radius: 2vmin;
 }

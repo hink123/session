@@ -1,33 +1,43 @@
 <%- include('../partials/header') %>
 
-<h3>
-    Seven Day Forecast
-</h3>
-
-<form action="/posts" method="POST">
-    <div>
-        <% sevenDays.forEach(function(day) { %>
-            <div>
-                <label for="<%= day %>">
-                    <%= day.date %>, <%= day.shape_full %>, <%= day.size %>ft
-                    <input type="radio" value="<%= JSON.stringify(day) %>" name="day">
-                </label>
-            </div>
-        <% }) %>
-    </div>
-    <div>
-        <label>Say something cool</label>
-        <input type="text" name="description">
-    </div>
-    <div>
-        <label>What Time?</label>
-        <input type="time" name="time">
-    </div>
-    <div>
-        <input type="text" name="sevenDays" value="<%= JSON.stringify(sevenDays) %>">
-    </div>
-    <button type="submit">Submit Session</button>
-</form>
+<div class="new">
+    <h3>
+        Seven Day Forecast
+    </h3>
+    
+    <form action="/posts" method="POST">
+        <table class="table">
+            <thead class="thead-dark">
+                <th></th>
+                <th>Date</th>
+                <th>Conditions</th>
+                <th>Size</th>
+            </thead>
+            <tbody>
+                <% sevenDays.forEach(function(day) { %>
+                    <tr>
+                        <td><input type="radio" value="<%= JSON.stringify(day) %>" name="day"></td>
+                        <td><%= day.date %></td>
+                        <td><%= day.shape_full %></td>
+                        <td><%= day.size %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        <table>
+        <div>
+            <label>Say something cool</label>
+            <input type="text" name="description">
+        </div>
+        <div>
+            <label>What Time?</label>
+            <input type="time" name="time">
+        </div>
+        <div>
+            <input type="text" name="sevenDays" value="<%= JSON.stringify(sevenDays) %>">
+        </div>
+        <button type="submit">Submit Session</button>
+    </form>
+</div>
 
 
 <%- include('../partials/footer') %>
