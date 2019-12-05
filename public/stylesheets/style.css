@@ -116,3 +116,28 @@ div.comment {
   border: 2px solid black;
   border-radius: 2vmin;
 }
+
+div.input-text {
+  width: 80vmin;
+  margin: 3vmin auto 2vmin;
+  padding: 2vmin;
+  border: 2px solid black;
+  border-radius: 2vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.caption {
+  text-align: center;
+}
+
+div.bttn {
+  text-align: center;
+  margin-top: 1vmin;
+}
+
+div.scroll-comment {
+  height: 50vmin;
+  overflow: scroll;
+}

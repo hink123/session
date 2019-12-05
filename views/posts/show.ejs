@@ -26,31 +26,39 @@
     </div>
 </div>
 
-<% post.comments.forEach(function(comment, idx) { %>
-    <div class="comment">
-        <h4>
-            <%= comment.userName %>
-        </h4>
-        <h4>
-            <%= comment.text %>
-        </h4>
-        <h4>
-            <%= comment.createdAt %>
-        </h4>
-        <% if (comment.user) { %>
-        <% if (comment.user.toString() === user._id.toString()) { %>
-            <form action="/posts/<%= post._id %>/comments/<%= idx %>?_method=DELETE" method="POST">
-                <button type="submit">Delete</button>
-            </form>
-        <% }} %>
-    </div>
-<% }) %>
+<div class="scroll-comment">
+    <% post.comments.forEach(function(comment, idx) { %>
+        <div class="comment">
+            <h2>
+                <%= comment.userName %>
+            </h2>
+            <div class="inner caption-start">
+                <h4>
+                    <%= comment.text %>
+                </h4>
+                <h6>
+                    Posted: <%= comment.createdAt %>
+                </h6>
+                <% if (comment.user) { %>
+                <% if (comment.user.toString() === user._id.toString()) { %>
+                    <form action="/posts/<%= post._id %>/comments/<%= idx %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                <% }} %>
+            </div>
+        </div>
+    <% }) %>
+</div>
 
-<form action="/posts/<%= post._id%>/comments" method="POST">
-    <label>Add a Comment</label>
-    <textarea name="text" cols="30" rows="10"></textarea>
-    <button type="submit">Submit</button>
-</form>
+<div class="input-text">
+    <form action="/posts/<%= post._id%>/comments" method="POST">
+        <h4 class="caption">Add a Comment</h4>
+        <textarea name="text" cols="45" rows="3"></textarea>
+        <div class="bttn">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 
 
 
