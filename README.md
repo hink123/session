@@ -17,7 +17,7 @@
 - New users will be prompted to sign into a google account.
 - You can then either join someone's surf session or make your own!
 
-[Go To Session](https://hink123.github.io/session/)
+[Go To Session](https://session-surf.herokuapp.com/)
 
 ## Next Steps
 #### In the future I plan to add more counties to choose from and also implement a sorting feature.
