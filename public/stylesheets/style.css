@@ -165,6 +165,8 @@ div.login a {
 
 button {
   background: none;
+  white-space: nowrap;
+  text-align: center;
   border: 1px black solid;
 }
 
