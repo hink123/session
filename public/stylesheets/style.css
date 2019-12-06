@@ -84,7 +84,7 @@ td {
 div.inputs {
   display: grid;
   grid-gap: 2vmin;
-  grid-template-columns: repeat(2, minmax(auto, 40vmin));
+  grid-template-columns: repeat(2, minmax(auto, 33.5vmin));
   justify-content: center;
   font-size: 3vmin;
   padding-bottom: 2vmin;
