@@ -1,6 +1,6 @@
 # Session
 
-### Session is a social surf forecast website. Users can view a seven day forecasts and then book a date/time to go.
+### Session is a social surf forecast website. Users can view a seven day forecasts and then book a date/time to go. Note: Current API has been shutdown, searching for a replacement.
 
 ## 
 ![Session Image](./public/images/home.jpg)
